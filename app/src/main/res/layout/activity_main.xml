@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#131314">
+
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#131314">
+
+        <!-- ВЕРХНЯЯ ШАПКА -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="#1E1F20"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
+
+            <Button
+                android:id="@+id/btnMenu"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:background="?attr/selectableItemBackground"
+                android:text="☰"
+                android:textColor="#E3E3E3"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/modelSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp" />
+
+            <Button
+                android:id="@+id/btnSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:background="?attr/selectableItemBackground"
+                android:text="⚙ Ключ"
+                android:textColor="#A8C7FA"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- ПАНЕЛЬ ФУНКЦИЙ GEMINI (ПОИСК, КОД, ОЗВУЧКА) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#18191A"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp">
+
+            <CheckBox
+                android:id="@+id/cbSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="🌐 Поиск Google"
+                android:textColor="#C4C7C5"
+                android:textSize="12sp" />
+
+            <CheckBox
+                android:id="@+id/cbCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:text="💻 Код"
+                android:textColor="#C4C7C5"
+                android:textSize="12sp" />
+
+            <CheckBox
+                android:id="@+id/cbTts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:text="🔊 Голос"
+                android:textColor="#C4C7C5"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- ОБЛАСТЬ ЧАТА -->
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="12dp">
+
+            <LinearLayout
+                android:id="@+id/chatContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
+        <!-- ИНДИКАТОР ПРИКРЕПЛЕННОГО ФАЙЛА -->
+        <TextView
+            android:id="@+id/tvAttached"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#282A2C"
+            android:padding="8dp"
+            android:text="📎 Файл прикреплен (нажмите, чтобы убрать)"
+            android:textColor="#A8C7FA"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <!-- НИЖНЯЯ КАПСУЛА ВВОДА -->
+        <LinearLayout
+            android:id="@+id/inputBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#1E1F20"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="6dp">
+
+            <Button
+                android:id="@+id/btnAttach"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:background="?attr/selectableItemBackground"
+                android:text="+"
+                android:textColor="#E3E3E3"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/inputPrompt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:hint="Спросите Gemini..."
+                android:maxLines="5"
+                android:padding="8dp"
+                android:textColor="#E3E3E3"
+                android:textColorHint="#8E918F"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btnVoice"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:background="?attr/selectableItemBackground"
+                android:text="🎤"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnSend"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:background="?attr/selectableItemBackground"
+                android:text="➤"
+                android:textColor="#A8C7FA"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- БОКОВОЕ МЕНЮ (ИСТОРИЯ ЧАТОВ) -->
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#1E1F20"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="✨ Gemini История"
+            android:textColor="#E3E3E3"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnNewChat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#282A2C"
+            android:text="＋ Новый чат"
+            android:textColor="#A8C7FA"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Долгое нажатие на чат — удалить"
+            android:textColor="#8E918F"
+            android:textSize="11sp"
+            android:layout_marginBottom="8dp" />
+
+        <ListView
+            android:id="@+id/historyListView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="#282A2C"
+            android:dividerHeight="1dp" />
+    </LinearLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>
